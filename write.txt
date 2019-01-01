@@ -1,0 +1,40 @@
+FileOutputStream fout=new FileOutputStream("D:\\testout.txt");    
+fout.write(65);    
+fout.close();    
+
+
+ByteArrayOutputStream bout=new ByteArrayOutputStream();    
+bout.write(65);    
+bout.writeTo(fout);    
+bout.flush();    
+bout.close();//has no effect
+
+   
+FilterOutputStream filter = new FilterOutputStream(fout);  
+String s="Welcome to javaTpoint.";      
+byte b[]=s.getBytes();      
+filter.write(b);     
+filter.flush();  
+filter.close();  
+
+
+String s = "Hello world!";
+int i = 64;
+ObjectOutputStream oout = new ObjectOutputStream(fout);
+oout.writeObject(s);
+oout.writeObject(i);
+oout.close();
+
+
+BufferedOutputStream bout=new BufferedOutputStream(fout);    
+String s="Welcome to javaTpoint.";    
+byte b[]=s.getBytes();    
+bout.write(b);    
+bout.flush();    
+bout.close();    
+
+  
+DataOutputStream data = new DataOutputStream(fout);  
+data.writeInt(65);  
+data.flush();  
+data.close();  
